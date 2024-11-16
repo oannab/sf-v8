@@ -1,0 +1,7 @@
+<defs>
+    <style type="text/css">@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Oswald|Raleway|Roboto|Indie+Flower|Gamja+Flower');</style>
+</defs>
+<svg width="150" height="48" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 24C0 10.7452 10.7452 0 24 0H126C139.255 0 150 10.7452 150 24C150 37.2548 139.255 48 126 48H24C10.7452 48 0 37.2548 0 24Z" fill="currentColor"/>
+    <text x="75" y="30" text-anchor="middle" fill="white" font-family="Forum, serif" font-size="18">STUDIO FACET</text>
+</svg>

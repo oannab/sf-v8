@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <div class="header-wrapper">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="/" class="logo">
+          <img src="/images/logo3.png" alt="Studio Facet Logo" class="logo-img">
+        </a>
+
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="/projects" class="nav-link">Projects</a></li>
+            <li class="has-submenu">
+              <a href="/services" class="nav-link">Services</a>
+              <ul class="submenu">
+                <li><a href="/services/architecture">Architecture</a></li>
+                <li><a href="/services/interior-design">Interior Design</a></li>
+                <li><a href="/services/planning">Planning</a></li>
+                <li><a href="/services/project-management">Project Management</a></li>
+              </ul>
+            </li>
+            <li><a href="/about" class="nav-link">About</a></li>
+            <li><a href="/contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button class="mobile-menu-toggle">
+          <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIyMCAwIDEwMCA4MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiB0cmFuc2Zvcm09InNjYWxlKC0xLCAxKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAiIC8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxyZWN0IHk9IjMwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwIiAvPgogICAgICAgICAgICAgICAgICAgICAgICA8cmVjdCB5PSI2MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMCIgLz4KICAgICAgICAgICAgICAgICAgICA8L3N2Zz4=" alt="Menu">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Carousel Section -->
+    <div class="hero">
+      <div id="main-carousel" class="relative" style="height: 600px;">
+        <div class="carousel-slides">
+          <div class="carousel-slide relative h-[600px]">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero-bg.jpg')">
+              <div class="absolute inset-0 bg-black/50"></div>
+              <div class="relative h-full flex items-center">
+                <div class="container mx-auto px-6 text-white">
+                  <h1>STUDIO FACET</h1>
+                  <h2 class="text-2xl md:text-3xl mb-8">LONDON</h2>
+                  <p class="max-w-2xl text-lg mb-8">Each Project is tailored to provide the backdrop for you to personalise with your own style. Your home, your choice.</p>
+                  <a href="/projects" class="btn">SEE OUR PROJECTS</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-slide relative h-[600px]">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero1.jpg')">
+              <div class="absolute inset-0 bg-black/50"></div>
+              <div class="relative h-full flex items-center">
+                <div class="container mx-auto px-6 text-white">
+                  <h1>LUXURY LIVING</h1>
+                  <h2 class="text-2xl md:text-3xl mb-8">BESPOKE DESIGNS</h2>
+                  <p class="max-w-2xl text-lg mb-8">Experience the perfect blend of comfort and sophistication in every space we create.</p>
+                  <a href="/projects" class="btn">EXPLORE MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Section -->
+    <section>
+      <div class="container mx-auto px-6">
+        <h2>Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div class="text-center">
+            <h3>Architectural Design</h3>
+            <p>Crafting spaces that inspire and endure, blending form with function.</p>
+          </div>
+          <div class="text-center">
+            <h3>Interior Design</h3>
+            <p>Creating harmonious environments that reflect your unique style and needs.</p>
+          </div>
+          <div class="text-center">
+            <h3>Project Management</h3>
+            <p>Ensuring seamless execution from concept to completion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    $(document).ready(function(){
+      // Carousel initialization
+      $('.carousel-slides').slick({
+        dots: true,
+        arrows: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnHover: false
+      });
+
+      // Mobile menu toggle
+      $('.mobile-menu-toggle').click(function() {
+        $('.nav-menu').toggleClass('active');
+      });
+    });
+  </script>
+
+  <style>
+    /* Additional styles to complement existing CSS */
+    .carousel-slides {
+      height: 600px;
+    }
+    .slick-dots {
+      bottom: 25px;
+      z-index: 20;
+    }
+    .slick-dots li button:before {
+      color: white;
+      opacity: 0.5;
+      font-size: 8px;
+    }
+    .slick-dots li.slick-active button:before {
+      color: white;
+      opacity: 1;
+    }
+    .slick-slide, .slick-slide * {
+      outline: none !important;
+    }
+    
+    /* Ensure proper spacing after nav */
+    main {
+      margin-top: 0;
+    }
+    
+    /* Hero section adjustments */
+    .hero {
+      min-height: 600px;
+      height: 600px;
+    }
+  </style>
+</body>
+</html>

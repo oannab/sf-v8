@@ -1,0 +1,127 @@
+archetypes/
+    default.md
+
+content/
+    projects/
+        project-1/
+            index.md
+            gallery/         
+                image1.jpg
+                image2.jpg
+                image3.jpg
+                etc...
+        project-2/
+            index.md
+            gallery/         
+                image1.jpg
+                image2.jpg
+                image3.jpg
+                etc...    
+        project-3/
+            index.md
+            gallery/         
+                image1.jpg
+                image2.jpg
+                image3.jpg
+                etc...          
+
+layoyts/
+    _default/
+    partials/
+        footer.html
+        header.html
+        nav.html
+        photoswipe-template.html
+    projects/
+        single.html
+        single.html
+    services/
+        services.html
+    shortcodes/
+    index.html
+    
+public/
+    about/
+        index.html/
+    contact/
+    ontact@studiofacet.com/
+    css/
+    images/
+    js/
+    projects/
+    services/
+    index.html
+    index.xml
+    sitemap.xml
+
+static/
+    css/
+        justified-layout/
+        photoswipe/
+            default-skin/
+        photoswipe.css
+        nav-mob.svg
+        nav.css
+        styles.css
+    images/
+        logo.jpg 
+        logo.png 
+        static_05.jpg
+    js/
+        justified-layout/
+        photoswipe/
+            photoswipe-ui-default.min.js
+            photoswipe.min.js
+        gallery-init.js
+
+.hugo_build.lock
+config.toml        
+
+
+**********************************************************
+``````````````integrate react/babel/tailwind``````````````
+
+├── assets/
+│   └── js/
+│       ├── components/    # Your React components go here
+│       └── main.jsx      # Main React entry point
+├── static/
+│   └── js/              # Built JavaScript will go here
+└── layouts/
+    └── _default/
+        └── baseof.html  # Include your built JS here
+
+
+==========================================================
+npm install react react-dom @babel/core @babel/preset-react @babel/preset-env
+npm install --save-dev esbuild esbuild-plugin-babel
+==========================================================
+
+==========================================================
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+==========================================================
+
+==========================================================
+npm install    # Install dependencies
+npm run start  # Start development server
+==========================================================
+
+==========================================================
+npm run build  # Build React components
+hugo           # Build Hugo site
+==========================================================
+
+
+
+**********************************************************
+
+2. Add these files to your project structure
+3. Update your build process to handle the React components
+4. Use the partial templates in your pages as needed
+
+**********************************************************
+
+
+**Your existing PhotoSwipe and Justified Layout integrations 
+will continue to work as they're separate from these hero components.**

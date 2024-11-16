@@ -1,0 +1,210 @@
+{{ define "main" }}
+<main class="landing-page" role="main">
+    <!-- Carousel Section -->
+    <section class="carousel">
+        <div class="carousel-inner">
+            {{ $gallery := resources.Match "images/gallery-landing/*" }}
+            {{ range $index, $image := $gallery }}
+                <div class="carousel-slide{{ if eq $index 0 }} active{{ end }}" 
+                     style="background-image: url('{{ $image.RelPermalink }}')">
+                    <div class="carousel-overlay"></div>
+                </div>
+            {{ end }}
+        </div>
+        
+        <div class="carousel-content">
+            <h1 class="text-5xl md:text-7xl font-light mb-4">STUDIO FACET</h1>
+            <h2 class="text-2xl md:text-3xl mb-8">LONDON</h2>
+            <p class="mb-8">Each Project is tailored to provide the backdrop for you to personalise with your own style.</p>
+            <a href="/projects" class="inline-block border border-white px-8 py-3 text-lg hover:bg-white hover:text-gray-900 transition duration-300">
+                SEE OUR PROJECTS
+            </a>
+        </div>
+
+        <div class="carousel-nav">
+            {{ range $index, $image := $gallery }}
+                <div class="carousel-dot{{ if eq $index 0 }} active{{ end }}"></div>
+            {{ end }}
+        </div>
+    </section>
+
+
+    <!-- Rest of your sections -->
+    <section class="py-24 bg-white">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl mb-16 font-display">take a different view</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div>
+        <h3 class="text-3xl mb-6">our Services</h3>
+        <h4 class="text-2xl font-light mb-8">A bespoke premium experience</h4>
+        <p class="mb-8">
+          What looks spectacular on the outside should always feel exceptional on the inside. 
+          Studio facet offers a bespoke premium experience from the moment you step into 
+          the foyer until the moment you leave.
+        </p>
+        <a href="/projects" 
+           class="inline-block border border-black px-8 py-3 text-lg hover:bg-black hover:text-white transition duration-300">
+          SEE OUR PROJECTS
+        </a>
+      </div>
+      <div class="bg-gray-100 min-h-[400px]"></div>
+    </div>
+  </div>
+</section>
+
+{{/* layouts/partials/sections/expertise.html */}}
+<section class="py-24 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl mb-16 font-display">Expertise</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div class="text-center">
+        <h3 class="text-2xl mb-4">Architectural design</h3>
+      </div>
+      <div class="text-center">
+        <h3 class="text-2xl mb-4">Interior Design</h3>
+      </div>
+      <div class="text-center">
+        <h3 class="text-2xl mb-4">Project Management</h3>
+      </div>
+    </div>
+    
+    <div class="text-center max-w-4xl mx-auto">
+      <p class="mb-8">
+        Marble finishes, mirrored cabinets and recessed lighting give bathrooms 
+        the feel of a contemporary spa.
+      </p>
+      <p class="uppercase">
+        We aim to create a unique sense of place that elevates the living experience 
+        in this magical building. Our expertise allows us to design interiors that 
+        are a sensitive response to location, architecture, and client vision, 
+        tailored to today's most sophisticated and discerning individuals.
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+
+<style>
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: -70px; /* Offset for fixed header */
+}
+
+.carousel-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    padding-top: 35vh;
+}
+
+.carousel-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: white;
+}
+
+/* Header modifications */
+.header-wrapper {
+    background-color: transparent;
+}
+
+.header-wrapper.scrolled {
+    background-color: rgba(243, 243, 243, 0.95);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Add click handlers to dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
+    });
+
+    // Auto-advance slides
+    setInterval(nextSlide, 5000);
+
+    // Header background on scroll
+    const header = document.querySelector('.header-wrapper');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+});
+</script>
+{{ end }}

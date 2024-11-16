@@ -1,0 +1,48 @@
+<div class="project-gallery">
+  <h1>{{ .Title }}</h1>
+  <p>{{ .Description }}</p>
+  <div class="gallery-items">
+    {{ range .Pages }}
+      <div class="gallery-item">
+        <a href="{{ .Permalink }}">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" />
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Params.short_description }}</p>
+        </a>
+      </div>
+    {{ end }}
+  </div>
+</div>
+
+
+<style>
+  .projects-gallery {
+    text-align: center;
+    padding: 20px;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .gallery-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .gallery-item:hover {
+    transform: scale(1.05);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+  }
+  .gallery-item h3 {
+    margin: 10px 0;
+  }
+  .gallery-item p {
+    padding: 0 10px 10px;
+  }
+</style>
+

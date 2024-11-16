@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ partial "header.html" . }}
+    <!-- PhotoSwipe CSS -->
+    <link rel="stylesheet" href="/css/photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="/css/photoswipe/default-skin/default-skin.css">
+</head>
+<body>
+    {{ partial "nav.html" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer.html" . }}
+    
+    <!-- Gallery Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/justified-layout/4.1.0/justified-layout.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
+    <script src="/js/photoswipe/photoswipe.min.js"></script>
+    <script src="/js/photoswipe/photoswipe-ui-default.min.js"></script>
+    <script src="/js/gallery-init.js" type="module"></script>
+</body>
+</html>

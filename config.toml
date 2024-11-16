@@ -1,0 +1,50 @@
+title = "Studio Facet"
+baseURL = "http://example.com/"
+#theme = "your-theme"
+
+
+[taxonomies]
+  service = "Services"
+  contact_email = "contact@studiofacet.com"
+
+
+[params]
+  description = "An architecture firm specializing in residential, commercial, and interior design projects."
+  contact_email = "contact@studiofacet.com"
+
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Services"
+    url = "/services/"
+    weight = 3
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 5
+
+
+
+[markup.goldmark.renderer]
+  unsafe = true  # Allows HTML in markdown files
+
+[imaging]
+  quality = 75
+  resampleFilter = "Lanczos"
+  anchor = "Center"  # For image cropping

@@ -1,0 +1,76 @@
+{{ define "main" }}
+<div class="project-container">
+    <!-- Dynamic Title from Directory Name -->
+    {{ $projectTitle := .File.Dir | path.Base | replaceRE "-" " " | title }}
+    <h2>{{ $projectTitle }}</h2>
+
+    <!-- Main Project Gallery -->
+    <div class="project-gallery justified-gallery" id="projectGallery">
+        {{ $gallery := .Resources.Match "gallery/*" }}
+        {{ range $gallery }}
+            {{ $image := . }}
+            <a href="{{ $image.RelPermalink }}" 
+               class="gallery-item"
+               data-pswp-width="{{ $.Params.imageWidth }}"
+               data-pswp-height="{{ $.Params.imageHeight }}">
+               <img src="{{ $image.RelPermalink }}" alt="{{ $projectTitle }}">
+            </a>
+        {{ end }}
+    </div>
+
+    <!-- Project Details -->
+    <div class="project-details">
+        <div class="details-grid">
+            <div class="detail-box">
+                <h3>Details</h3>
+                <p>{{ .Params.details }}</p>
+            </div>
+            
+            <div class="detail-box">
+                <p class="highlight-text">{{ .Params.highlight_text }}</p>
+                <a href="/projects" class="cta-button">SEE OUR PROJECTS</a>
+            </div>
+            
+            <div class="detail-box">
+                <p>{{ .Params.secondary_details }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar Projects -->
+    <div class="similar-projects">
+        <h2>Similar Projects</h2>
+        <div class="similar-grid">
+            {{ $currentPage := . }}
+            {{ range first 3 (where .Site.RegularPages "Type" "projects") }}
+                {{ if ne . $currentPage }}
+                    {{ with .Resources.GetMatch .Params.featured_image }}
+                        <a href="{{ $.Permalink }}" class="similar-project">
+                            <img src="{{ .RelPermalink }}" alt="{{ $.Title }}">
+                            <h3>{{ $.Title }}</h3>
+                        </a>
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</div>
+
+<style>
+/* ... [Previous CSS remains the same] ... */
+</style>
+
+<script>
+$(document).ready(function() {
+    // Initialize Flickr Justified Gallery
+    $("#projectGallery").justifiedGallery({
+        rowHeight: 400,
+        maxRowHeight: 500,
+        margins: 10,
+        border: 0,
+        lastRow: 'nojustify',
+        randomize: false
+    });
+});
+</script>
+{{ end }}

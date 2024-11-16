@@ -1,0 +1,96 @@
+{{ define "main" }}
+<h2>Projects</h2>
+<div class="projects-container">
+    <div class="projects-grid">
+        {{ range .Pages }}
+        <div class="project-card">
+            <a href="{{ .Permalink }}" class="project-link">
+                <div class="project-image">
+                    <img src="{{ .File.Dir | relURL }}/{{ .Params.featured_image }}" alt="{{ .File.Dir | path.Base | title }}">
+                </div>
+                <div class="project-title">
+                    {{ $projectTitle := .File.Dir | path.Base | replaceRE "-" " " | title}}
+                    <h2>{{ $projectTitle }}</h2>
+                    {{ with .Params.subtitle }}
+                        <p>{{ . }}</p>
+                    {{ end }}
+                </div>
+            </a>
+        </div>        
+        {{ end }}
+    </div>
+</div>
+
+<style>
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.project-card {
+    position: relative;
+
+}
+
+.project-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Makes it square */
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.project-image img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-title {
+    padding: 1rem 0;
+}
+
+.project-title h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.project-title p {
+    margin: 0.3rem 0 0 0;
+    color: #3f3f3fc8;
+    font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{{ end }}
